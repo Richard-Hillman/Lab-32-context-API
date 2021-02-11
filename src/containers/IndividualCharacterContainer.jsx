@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useCharacterDetail } from '../hooks/useCharacterDetail';
+import { useCharacterDetail } from '../hooksAndContext/useCharacterDetail';
 import IndividualCharacterPre from '../components/Presentational/IndividualCharacterPre';
 import LoadingSpinner from '../components/loading/Loading';
 

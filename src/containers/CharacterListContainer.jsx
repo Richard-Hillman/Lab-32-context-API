@@ -2,7 +2,7 @@
 import React from 'react';
 import CharacterListPre from '../components/Presentational/CharacterListPre';
 import LoadingSpinner from '../components/loading/Loading';
-import { useCharacterList } from '../hooks/useCharacterList';
+import { useCharacterList } from '../hooksAndContext/useCharacterList';
 
 const CharacterList = () => {
   const { loading, characters } = useCharacterList();
