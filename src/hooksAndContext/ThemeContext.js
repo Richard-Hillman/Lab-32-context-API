@@ -1,39 +1,45 @@
 import React, { useState, createContext, useContext } from 'react';
+import PropTypes from 'prop-types';
 
-const ThemeContext = createContext(null);
+// -----------------------------------------------------------------
+
+export const ThemeContext = createContext();
 
 // -----------------------------------------------------------------
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(null);
-
-  const toggle = ({ target }) => { 
-    if(target.checked) setProvider(() => LightSide);
-    else setProvider(() => DarkSide);
-  };
+  const { theme, toggleTheme } = useToggleTheme();
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      { children }
     </ThemeContext.Provider>
   );
 };
 
 // -----------------------------------------------------------------
 
+export const useToggleTheme = () => {
+  const [theme, setTheme] = useState('lightSide');
+  const toggleTheme = () => {
+    setTheme(theme => {
+      if(theme === 'lightSide') return 'darkSide';
+      else return 'lightSide';
+    });
+  };
+
+  return { theme, toggleTheme };
+};
+
+// -----------------------------------------------------------------
+
 export const useTheme = () => {
-  const { theme } = useContext(ThemeContext);
-  return theme;
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  return theme, toggleTheme;
 };
   
 // -----------------------------------------------------------------
 
-export const useSetTheme = () => {
-  const { setTheme } = useContext(ThemeContext);
-  return setTheme;
+ThemeProvider.propTypes = {
+  children: PropTypes.object
 };
-
-// -----------------------------------------------------------------
-
-
-
