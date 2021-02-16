@@ -2,7 +2,7 @@
 import React from 'react';
 import CharacterListPresentation from '../components/Presentational/CharacterListPresentation';
 import Header from '../components/themeHeader/Header';
-import { useCharacterList } from '../hooksAndContext//UseCharacterList';
+import { useCharacterList } from '../hooksAndContext/UseCharacterList';
 import { useTheme } from '../hooksAndContext/ThemeContext';
 import styles from './CharacterList.css';
 
@@ -15,7 +15,7 @@ export default function CharacterList() {
       <Header /> 
 
       <div > 
-      return <CharacterListPresentation characters={characters} className={`${styles.CharacterListPresentation} ${styles[theme]}`} />
+        <CharacterListPresentation characters={characters} className={`${styles.CharacterListPresentation} ${styles[theme]}`} />
       </div>
     </>
   );

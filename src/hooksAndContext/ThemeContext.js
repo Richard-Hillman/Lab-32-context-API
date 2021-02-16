@@ -7,18 +7,6 @@ export const ThemeContext = createContext();
 
 // -----------------------------------------------------------------
 
-export const ThemeProvider = ({ children }) => {
-  const { theme, toggleTheme } = useToggleTheme();
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      { children }
-    </ThemeContext.Provider>
-  );
-};
-
-// -----------------------------------------------------------------
-
 export const useToggleTheme = () => {
   const [theme, setTheme] = useState('lightSide');
   const toggleTheme = () => {
@@ -32,10 +20,23 @@ export const useToggleTheme = () => {
 };
 
 // -----------------------------------------------------------------
+// -----------------------------------------------------------------
+
+export const ThemeProvider = ({ children }) => {
+  const { theme, toggleTheme } = useToggleTheme();
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      { children }
+    </ThemeContext.Provider>
+  );
+};
+
+// -----------------------------------------------------------------
 
 export const useTheme = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  return theme, toggleTheme;
+  return { theme, toggleTheme };
 };
   
 // -----------------------------------------------------------------

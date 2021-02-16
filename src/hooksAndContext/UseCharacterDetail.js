@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getCharacterByName } from '../services/GetCharacterByName';
 
-export const useCharacterDetail = name => {
-  const [character, setCharacter] = useState({});
+const useCharacterDetail = name => {
+  const [character, setCharacter] = useState([]);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
@@ -18,3 +18,6 @@ export const useCharacterDetail = name => {
     loading
   };
 };
+
+export { useCharacterDetail }
+;

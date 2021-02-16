@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Character from '../Presentational/Character';
 import { useTheme } from '../../hooksAndContext/ThemeContext';
 import styles from './CharacterListPresentation.css';
-import Header from '../themeHeader/Header';
 
 const CharacterListPresentation = ({ characters }) => {
   const { theme } = useTheme();

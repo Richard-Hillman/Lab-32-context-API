@@ -6,6 +6,7 @@ import CharacterDetailsPresentation from '../components/Presentational/Character
 import Loading from '../components/loading/Loading';
 
 const CharacterDetails = ({ match }) => {
+  console.log(match.params.name);
   const { loading, character } = useCharacterDetail(match.params.name);
   if(loading) return <Loading />;
   return <CharacterDetailsPresentation character={character} />;
