@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Character from '../Presentational/Character';
+import Character from '../presentational/Character';
 import { useTheme } from '../../hooksAndContext/ThemeContext';
 import styles from './CharacterListPresentation.css';
 

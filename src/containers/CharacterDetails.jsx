@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useCharacterDetail } from '../hooksAndContext/UseCharacterDetail';
-import CharacterDetailsPresentation from '../components/Presentational/CharacterDetailsPresentation';
+import CharacterDetailsPresentation from '../components/presentational/CharacterDetailsPresentation';
 import Loading from '../components/loading/Loading';
 
 const CharacterDetails = ({ match }) => {
