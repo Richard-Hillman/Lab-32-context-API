@@ -1,20 +1,23 @@
 import { useState, useEffect } from 'react';
-import { GetCharacterByName } from '../services/GetCharacterByName';
+import { getCharacterByName } from '../services/GetCharacterByName';
 
-export const useCharacterDetail = name => {
+const useCharacterDetail = name => {
+  const [character, setCharacter] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [character, setCharacter] = useState({});
   
   useEffect(() => {
-    GetCharacterByName(name)
-      .then(character => {
+    getCharacterByName(name)
+      .then((character) => {
         setCharacter(character);
         setLoading(false);
       });
   }, [name]);
   
   return {
-    loading,
-    character
+    character,
+    loading
   };
 };
+
+export { useCharacterDetail }
+;

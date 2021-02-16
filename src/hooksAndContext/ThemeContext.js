@@ -1,20 +1,33 @@
 import React, { useState, createContext, useContext } from 'react';
-
-const ThemeContext = createContext(null);
+import PropTypes from 'prop-types';
 
 // -----------------------------------------------------------------
 
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(null);
+export const ThemeContext = createContext();
 
-  const toggle = ({ target }) => { 
-    if(target.checked) setProvider(() => LightSide);
-    else setProvider(() => DarkSide);
+// -----------------------------------------------------------------
+
+export const useToggleTheme = () => {
+  const [theme, setTheme] = useState('lightSide');
+  const toggleTheme = () => {
+    setTheme(theme => {
+      if(theme === 'lightSide') return 'darkSide';
+      else return 'lightSide';
+    });
   };
 
+  return { theme, toggleTheme };
+};
+
+// -----------------------------------------------------------------
+// -----------------------------------------------------------------
+
+export const ThemeProvider = ({ children }) => {
+  const { theme, toggleTheme } = useToggleTheme();
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      { children }
     </ThemeContext.Provider>
   );
 };
@@ -22,18 +35,12 @@ export const ThemeProvider = ({ children }) => {
 // -----------------------------------------------------------------
 
 export const useTheme = () => {
-  const { theme } = useContext(ThemeContext);
-  return theme;
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  return { theme, toggleTheme };
 };
   
 // -----------------------------------------------------------------
 
-export const useSetTheme = () => {
-  const { setTheme } = useContext(ThemeContext);
-  return setTheme;
+ThemeProvider.propTypes = {
+  children: PropTypes.object
 };
-
-// -----------------------------------------------------------------
-
-
-
