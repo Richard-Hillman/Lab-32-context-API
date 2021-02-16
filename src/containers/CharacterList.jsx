@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import CharacterListPresentation from '../components/Presentational/CharacterListPresentation';
+import CharacterListPresentation from '../components/presentational/CharacterListPresentation';
 import Header from '../components/themeHeader/Header';
 import { useCharacterList } from '../hooksAndContext/UseCharacterList';
 import { useTheme } from '../hooksAndContext/ThemeContext';
